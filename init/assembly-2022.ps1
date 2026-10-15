@@ -1,6 +1,9 @@
 # @bastigas
 # Hardening for HPCC
 
+# run Get-LocalUser BEFORE script
+# Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
 $KeepUsers = @("jmoney", "plinktern")
 $NewPassword = "sights-shades-prompt"
 
