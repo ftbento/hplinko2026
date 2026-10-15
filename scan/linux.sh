@@ -1,7 +1,21 @@
-# general information read only quick runs (output to fill, diff comparison as competition goes on)
-# sudo ./linux.sh > ~/scan/scan-$(date +%Y%m%d_%H%M%S).txt
+#!/bin/bash
+# @ftbento
+# general information read only quick runs (output to file, diff comparison as competition goes on)
+# good lord this took forever
+# sudo ./linux.sh
 
-mkdir -p ~/scan
+[ "$(id -u)" -eq 0 ] || { echo "Run as root: sudo $0" >&2; exit 1; }
+
+# Unassuming, root-only location for scan history
+scan_dir="/.spool"
+mkdir -p "$scan_dir"
+chmod 700 "$scan_dir"
+log="$scan_dir/scan-$(date +%Y%m%d_%H%M%S).txt"
+
+# Send all output to the log; keep fd 3 pointed at the terminal for the final notice.
+exec 3>&1
+exec >"$log" 2>&1
+
 echo "Scan  $(date)"
 echo "host: $(hostname)"
 echo
@@ -28,7 +42,7 @@ echo "UID 0 accounts (should only be root)"
 awk -F: '$3==0{print $1}' /etc/passwd
 
 echo "Empty pass accounts"
-sudo awk -F: '$2==""{print $1}' /etc/shadow 2>/dev/null || echo "(need root)"
+awk -F: '$2==""{print $1}' /etc/shadow 2>/dev/null || echo "(need root)"
 
 echo "sudo/wheel members"
 getent group sudo wheel 2>/dev/null
@@ -113,3 +127,8 @@ fi
 
 echo
 echo "Scan complete at $(date). run diff on files"
+
+# restore term (this was super cool i didnt know you could do this)
+exec >&3 3>&-
+echo "Scan saved to $log"
+echo "Diff: diff <old-scan> <new-scan>" # good to compare from the first two scans (before and after hardening) to the most recent scan
