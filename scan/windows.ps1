@@ -2,6 +2,7 @@
 # Run from an ELEVATED PowerShell for complete results: .\windows.ps1
 # AI adapted from linux.sh
 # NOT VERIFIED (PLEASE VERIFY, AI GENERATED SCRIPT, NO HUMAN THOUGHT)
+# - Verified 10-15 6:28PM, seems to work fine.
 
 # Unassuming, hidden location for scan history
 $ScanDir = "$env:SystemDrive\.spool"

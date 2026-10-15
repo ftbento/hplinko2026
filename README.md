@@ -16,5 +16,19 @@ Log location:
 CHECK FOR RED TEAM "presents" (/scan should help)
 
 # Pull Repo
+
+## Linux:
+```bash
 curl -sL https://github.com/ftbento/hplinko2026/archive/refs/heads/main.tar.gz | tar -xzC ~/
 find ~/hplinko2026-main -name "*.sh" -exec chmod +x {} +
+```
+
+## PowerShell (do you see this bs)
+```powershell
+$ProgressPreference = 'SilentlyContinue'
+$zip = Join-Path $env:TEMP 'hplinko2026.zip'
+curl.exe -sL https://github.com/ftbento/hplinko2026/archive/refs/heads/main.zip -o $zip
+Expand-Archive $zip -DestinationPath $env:USERPROFILE -Force
+Remove-Item $zip
+Get-ChildItem "$env:USERPROFILE\hplinko2026-main" -Recurse -Include *.ps1 | Unblock-File
+```
