@@ -4,6 +4,7 @@
 # sudo ./linux.sh
 
 export t=21
+export pass=breaks-broths-braise
 
 echo "Installs:"
 if command -v dnf &> /dev/null; then
@@ -53,8 +54,8 @@ systemctl restart sshd || systemctl restart ssh
 
 # User mgmt
 echo "Updating user passwords..."
-echo "REMEMBER TO UPDATE IN SCOREBOARD FOR JMONEY ACCOUNT TO nerves-alight-beeper"
-echo -e "jmoney:nerves-alight-beeper\nplinktern:nerves-alight-beeper" | chpasswd
+echo "REMEMBER TO UPDATE IN SCOREBOARD FOR JMONEY ACCOUNT TO ${pass}"
+echo -e "jmoney:${pass}\nplinktern:${pass}" | chpasswd
 
 echo "Removing unnecessary local user accounts..."
 for user in $(cut -d: -f1 /etc/passwd); do
