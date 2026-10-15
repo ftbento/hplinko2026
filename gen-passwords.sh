@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Generates N passwords in the format word-word-word from words.txt
+# reasonable ai slop <3
 
 set -euo pipefail
 
