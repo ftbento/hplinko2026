@@ -13,16 +13,25 @@ Log location:
 ## PowerShell (run from an *elevated* prompt for complete results)
 `.\windows.ps1`
 
+# Init
+- 
+
 CHECK FOR RED TEAM "presents" (/scan should help)
+
+# Init (run after scan)
+## Linux:
+`sudo ./init/ignition-fedora.sh` (Fedora)
+`sudo ./init/guidance-ubuntu.sh` (Ubuntu)
+
+Note: passwords are hardcoded in init scripts, so delete `init/` after running them
+`rm -rf ~/hplinko2026-main/init`
 
 # Pull Repo
 
 ## Linux:
 ```bash
-curl -fL -o ~/hplinko2026.tar.gz https://github.com/ftbento/hplinko2026/archive/refs/heads/main.tar.gz
-tar -xzf ~/hplinko2026.tar.gz -C ~/
+curl -sL https://github.com/ftbento/hplinko2026/archive/refs/heads/main.tar.gz | tar -xzC ~/
 find ~/hplinko2026-main -name "*.sh" -exec chmod +x {} +
-rm -f ~/hplinko2026.tar.gz
 ```
 
 ## PowerShell (do you see this bs)
