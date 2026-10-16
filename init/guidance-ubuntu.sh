@@ -128,6 +128,4 @@ fail2ban-client status sshd 2>/dev/null
 history -c
 
 echo "✅ Hardening script completed successfully!"
-echo "chattr +i /etc/ssh/sshd_config"
-echo "chattr +i /etc/passwd"
-echo "chattr +i /etc/shadow"
+echo "chattr +i /etc/ssh/sshd_config /etc/passwd /etc/shadow"
