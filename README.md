@@ -19,8 +19,10 @@ CHECK FOR RED TEAM "presents" (/scan should help)
 
 ## Linux:
 ```bash
-curl -sL https://github.com/ftbento/hplinko2026/archive/refs/heads/main.tar.gz | tar -xzC ~/
+curl -fL -o ~/hplinko2026.tar.gz https://github.com/ftbento/hplinko2026/archive/refs/heads/main.tar.gz
+tar -xzf ~/hplinko2026.tar.gz -C ~/
 find ~/hplinko2026-main -name "*.sh" -exec chmod +x {} +
+rm -f ~/hplinko2026.tar.gz
 ```
 
 ## PowerShell (do you see this bs)
