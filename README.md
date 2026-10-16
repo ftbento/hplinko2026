@@ -48,6 +48,9 @@ CHECK FOR RED TEAM "presents" (/scan should help).
 
 Passwords are hardcoded in the init scripts, so delete `init/` after running:
 
+IF NEEDED
+`chattr +i /etc/passwd /etc/shadow /etc/ssh/sshd\_config`
+
 ## Monitoring
 
 ### Linux
