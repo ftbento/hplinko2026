@@ -39,23 +39,23 @@ CHECK FOR RED TEAM "presents" (/scan should help).
 ## Init
 
 ### Linux
-`sudo ./init/ignition-fedora.sh` (Fedora)
-`sudo ./init/guidance-ubuntu.sh` (Ubuntu)
+- `sudo ./init/ignition-fedora.sh` (Fedora)
+- `sudo ./init/guidance-ubuntu.sh` (Ubuntu)
 
 ### Windows
-`.\init\assembly-2022.ps1` (NOT FULLY IMPLEMENTED)
-`.\init\manifest-2019.ps1` (NOT FULLY IMPLEMENTED)
+- `.\init\assembly-2022.ps1` (NOT FULLY IMPLEMENTED)
+- `.\init\manifest-2019.ps1` (NOT FULLY IMPLEMENTED)
 
 Passwords are hardcoded in the init scripts, so delete `init/` after running:
 
 IF NEEDED
-`chattr +i /etc/passwd /etc/shadow /etc/ssh/sshd\_config`
+- `chattr +i /etc/passwd /etc/shadow /etc/ssh/sshd\_config`
 
 ## Monitoring
 
 ### Linux
-`./monitors.sh` opens two tabs (fedora + ubuntu).
-`./monitors.sh -k` closes the session.
+- `./monitors.sh` opens two tabs (fedora + ubuntu).
+- `./monitors.sh -k` closes the session.
 
 `ranger`
 - click r, then type `bash` or `sh` to run scripts directly.
