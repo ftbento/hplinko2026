@@ -46,7 +46,9 @@ CHECK FOR RED TEAM "presents" (/scan should help).
 - `.\init\assembly-2022.ps1` (NOT FULLY IMPLEMENTED)
 - `.\init\manifest-2019.ps1` (NOT FULLY IMPLEMENTED)
 
-Passwords are hardcoded in the init scripts, so delete `init/` after running:
+### Post Init
+- Passwords are hardcoded in the init scripts, so delete `init/` after running
+- **IMPORTANT** UPDATE NEIGH SCOREBOARD PASSWORDS
 
 IF NEEDED
 - `chattr +i /etc/passwd /etc/shadow /etc/ssh/sshd\_config`
