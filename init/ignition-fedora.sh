@@ -125,6 +125,31 @@ echo "fail2ban status:"
 fail2ban-client status 2>/dev/null
 fail2ban-client status sshd 2>/dev/null
 
+# Remove scheduling/persistence mechanisms (cron, at, anacron)
+echo "Removing cron/at/anacron..."
+systemctl stop crond 2>/dev/null || true
+systemctl disable crond 2>/dev/null || true
+
+systemctl stop cron 2>/dev/null || true
+systemctl disable cron 2>/dev/null || true
+
+systemctl stop atd 2>/dev/null || true
+systemctl disable atd 2>/dev/null || true
+
+systemctl stop anacron 2>/dev/null || true
+systemctl disable anacron 2>/dev/null || true
+
+if command -v dnf &> /dev/null; then
+  dnf remove -y cronie at anacron 2>/dev/null || true
+elif command -v apt &> /dev/null; then
+  apt purge -y cron at anacron 2>/dev/null || true
+  apt autoremove -y 2>/dev/null || true
+fi
+
+rm -f /etc/crontab /etc/cron.d/* /etc/cron.daily/* /etc/cron.hourly/* /etc/cron.weekly/* /etc/cron.monthly/* 2>/dev/null || true
+rm -rf /var/spool/cron /var/spool/at /var/spool/anacron 2>/dev/null || true
+rm -f /etc/at.allow /etc/at.deny /usr/bin/crontab /usr/bin/at /usr/bin/atq /usr/bin/atrm /usr/sbin/anacron 2>/dev/null || true
+
 history -c
 
 echo "✅ Hardening script completed successfully!"

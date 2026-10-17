@@ -4,7 +4,7 @@
 # run Get-LocalUser BEFORE script
 # Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 
-$KeepUsers = @("jmoney", "plinktern")
+$KeepUsers = @("jmoney", "plinktern", "Administrator")
 $NewPassword = "sights-shades-prompt"
 
 # 1. CHANGE USER PASSWORDS
