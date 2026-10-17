@@ -56,10 +56,8 @@ if (-not $mysqlCmd) {
 }
 
 if ($mysqlCmd) {
-    # Try setting root password using default/empty password
-    & $mysqlCmd -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '$DbPassword';" 2>$null
+    & $mysqlCmd -u root -p"H00ves0nTheM00n" -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '$DbPassword';" 2>$null
 
-    # Run all hardening queries + jmoney scoring account rotation in ONE call
     & $mysqlCmd --force -u root -p"$DbPassword" -e "
         ALTER USER 'root'@'localhost' IDENTIFIED BY '$DbPassword';
         ALTER USER 'jmoney'@'%' IDENTIFIED BY '$DbPassword';
