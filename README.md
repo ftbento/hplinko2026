@@ -1,4 +1,4 @@
-# hplinko2026
+# nextjstesting
 
 `/scan` -> `/backup`  -> `/init` -> scoreboard.plinko.horse -> delete init scripts -> `/backup` -> `/monitors`
 
@@ -6,18 +6,18 @@
 
 ### Linux
 ```bash
-curl -sL https://github.com/ftbento/hplinko2026/archive/refs/heads/main.tar.gz | tar -xzC ~/
-find ~/hplinko2026-main -name "*.sh" -exec chmod +x {} +
+curl -sL https://github.com/ftbento/nextjstesting/archive/refs/heads/main.tar.gz | tar -xzC ~/
+find ~/nextjstesting-main -name "*.sh" -exec chmod +x {} +
 ```
 
 ### PowerShell (elevated)
 ```powershell
 $ProgressPreference = 'SilentlyContinue'
-$zip = Join-Path $env:TEMP 'hplinko2026.zip'
-curl.exe -sL https://github.com/ftbento/hplinko2026/archive/refs/heads/main.zip -o $zip
+$zip = Join-Path $env:TEMP 'nextjstesting.zip'
+curl.exe -sL https://github.com/ftbento/nextjstesting/archive/refs/heads/main.zip -o $zip
 Expand-Archive $zip -DestinationPath $env:USERPROFILE -Force
 Remove-Item $zip
-Get-ChildItem "$env:USERPROFILE\hplinko2026-main" -Recurse -Include *.ps1 | Unblock-File
+Get-ChildItem "$env:USERPROFILE\nextjstesting-main" -Recurse -Include *.ps1 | Unblock-File
 ```
 
 ## Scan
