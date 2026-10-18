@@ -1,6 +1,6 @@
 # hplinko2026
 
-`/scan` -> `/init` -> `/monitoring`
+`/scan` -> `/backup`  -> `/init` -> scoreboard.plinko.horse -> delete init scripts -> `/backup` -> `/monitors`
 
 ## Pull repo
 
