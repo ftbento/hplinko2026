@@ -23,12 +23,12 @@ tmux kill-session -t "$SESSION" 2>/dev/null
 tmux new-session -d -s "$SESSION" -n fedora
 tmux set-option -t "$SESSION" mouse on 2>/dev/null
 tmux set-window-option -t "$SESSION:fedora" remain-on-exit on 2>/dev/null
-tmux send-keys -t "$SESSION:fedora" "ssh -t fedora@198.18.5.115 'sudo bash \$HOME/hplinko2026-main/monitoring/linux.sh'" C-m
+tmux send-keys -t "$SESSION:fedora" "ssh -t fedora@172.16.21.20 'sudo bash \$HOME/hplinko2026-main/monitoring/linux.sh'" C-m
 
 # ubuntu tab
 tmux new-window -t "$SESSION" -n ubuntu
 tmux set-window-option -t "$SESSION:ubuntu" remain-on-exit on 2>/dev/null
-tmux send-keys -t "$SESSION:ubuntu" "ssh -t ubuntu@198.18.6.243 'sudo bash \$HOME/hplinko2026-main/monitoring/linux.sh'" C-m
+tmux send-keys -t "$SESSION:ubuntu" "ssh -t ubuntu@172.16.21.10 'sudo bash \$HOME/hplinko2026-main/monitoring/linux.sh'" C-m
 
 tmux select-window -t "$SESSION:fedora"
 
