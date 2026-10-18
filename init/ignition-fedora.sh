@@ -25,15 +25,6 @@ fi
 
 echo "Hardening..."
 
-echo "Local + blackbox backup"
-tar -czvf /root/sys.tar.gz /etc /var /home /etc/ssh
-scp /root/sys.tar.gz plinktern@172.16.${t}.5:/home/plinktern/ 2>/dev/null || echo "⚠️ Offsite backup to blackbox skipped/failed."
-# scp plinktern@172.16.21.5:/home/plinktern/sys.tar.gz /root/
-# cd /
-# tar -xzvf /root/sys.tar.gz
-# restart through systemctl, whatever
-# check chmod file perms for system files
-
 echo "Disabling root login"
 passwd -l root 2>/dev/null # disable root login
 

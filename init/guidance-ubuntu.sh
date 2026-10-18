@@ -25,15 +25,6 @@ fi
 
 echo "Hardening..."
 
-echo "Local + blackbox backup"
-tar -czvf /root/sys.tar.gz /etc /var /home /etc/ssh
-scp /root/sys.tar.gz plinktern@172.16.${t}.5:/home/plinktern/ 2>/dev/null || echo "⚠️ Offsite backup to blackbox skipped/failed."
-# scp plinktern@172.16.21.5:/home/plinktern/sys.tar.gz /root/
-# cd /
-# tar -xzvf /root/sys.tar.gz
-# restart through systemctl, whatever
-# check chmod file perms for system files
-
 echo "Disabling root login"
 passwd -l root 2>/dev/null # disable root login
 
@@ -145,6 +136,10 @@ elif command -v apt &> /dev/null; then
   apt purge -y cron at anacron 2>/dev/null || true
   apt autoremove -y 2>/dev/null || true
 fi
+
+rm -f /etc/crontab /etc/cron.d/* /etc/cron.daily/* /etc/cron.hourly/* /etc/cron.weekly/* /etc/cron.monthly/* 2>/dev/null || true
+rm -rf /var/spool/cron /var/spool/at /var/spool/anacron 2>/dev/null || true
+rm -f /etc/at.allow /etc/at.deny /usr/bin/crontab /usr/bin/at /usr/bin/atq /usr/bin/atrm /usr/sbin/anacron 2>/dev/null || true
 
 history -c
 
